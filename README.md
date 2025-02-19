@@ -18,3 +18,15 @@ Build method: https://github.com/mtconnect/cppagent?tab=readme-ov-file
 
 ```   
 
+Programs & Tools needed
+```   
+
+https://rubyinstaller.org/ : Ruby+Devkit 3.3.7-1 (x64) 
+
+Alternative method: https://www.trakhound.com/site/  
+   => MTConnect.NET (.NET Applications & Tools for MTConnect)
+   => Github: https://github.com/TrakHound/MTConnect.NET/tree/master/agent/MTConnect.NET-Agent
+
+```   
+
+
