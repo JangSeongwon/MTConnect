@@ -1,9 +1,14 @@
 
 https://rubyinstaller.org/ : Ruby+Devkit 3.3.7-1 (x64) 
 
+Alternative method: https://www.trakhound.com/site/
+
+빌드용 툴(프로그램) 위치:  C:\Users\jj22j\tools\
+
 Error Solution list
 1. Error with Cmake and boost Could NOT find Boost (missing: program_options) : https://sourceforge.net/projects/boost/files/boost-binaries/1.78.0/
 
 2. Could+NOT+find+LibXml2 : https://pages.lip6.fr/Jean-Francois.Perrot/XML-Int/Session1/WinLibxml.html 
   => CMAKE시 Enviornments Path에 추가 OR Error 뜨는 항목에 PATH 수동 추가 (이방법은 맨 위 Path만 추가하면 됨)
+
 
