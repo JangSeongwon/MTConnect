@@ -25,3 +25,8 @@ if client.connect():
     client.close()
 else:
     print("PLC 연결 실패")
+
+
+
++ client.read_holding_registers(0, 10): 0번 주소부터 10개 값 읽기
++ client.write_register(5, 1234): 5번 주소 레지스터에 1234 값 쓰기
