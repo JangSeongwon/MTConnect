@@ -1,0 +1,27 @@
+from pymodbus.client import ModbusTcpClient
+
+# PLC IP 주소와 포트 설정 (Modbus TCP 기본 포트: 502)
+PLC_IP = "192.168.1.100"
+PLC_PORT = 502
+
+# Modbus TCP 클라이언트 생성
+client = ModbusTcpClient(PLC_IP, port=PLC_PORT)
+
+# 연결 확인
+if client.connect():
+    print("PLC 연결 성공!")
+
+    # 레지스터 0번 주소부터 10개의 값을 읽음
+    result = client.read_holding_registers(0, 10)
+    if result.isError():
+        print("데이터 읽기 실패")
+    else:
+        print(f"레지스터 값: {result.registers}")
+
+    # PLC에 값 쓰기 (예: 레지스터 5번에 1234 저장)
+    client.write_register(5, 1234)
+    print("데이터 쓰기 완료")
+
+    client.close()
+else:
+    print("PLC 연결 실패")
