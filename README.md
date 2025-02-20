@@ -13,6 +13,9 @@ Linux Modbus 통신용 필수 패키지 설:
       sudo apt update
       sudo apt install -y python3-pip
       pip install pymodbus
+      +RTU용
+      sudo apt install -y python3-serial
+      pip install pymodbus
 
 ```
 
