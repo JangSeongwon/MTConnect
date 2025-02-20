@@ -48,7 +48,8 @@ For Linux:
             이때 버전이 안맞는 상황이 많음: Cmake는 직접 수동으로 다운받아 업데이트해야함 = https://cmake.org/download/
             1. tar -svf 'file'
             2. 해제한 파일로 이동 후, ./bootstrap
-                  -> [Error] Could not find OpenSSL -> 해결방법: apt-get install libssl-dev
+                  -> [Error] 'Could not find OpenSSL' -> 해결방법: apt-get install libssl-dev or sudo apt install wget build-essential openssl
+                  -> [Error] 'CMake Error at CMakeLists.txt:77 (configure_file): configure_file Problem configuring file' -> 해결방법: Cmake Release 버전 아래로 다시 진행
             3. make
             4. sudo make install
             5. 버전 확인: cmake --version
