@@ -29,7 +29,7 @@ else:
     print("Modbus RTU 연결 실패!")
 
 
-port='COM3': 사용하는 포트를 설정해야 해. (장치 관리자에서 확인 가능)
-baudrate=9600: 장치와 일치하는 보드레이트 설정.
-parity, stopbits, bytesize: 슬레이브 장치와 동일하게 설정해야 데이터가 정상적으로 전송돼.
-read_holding_registers: Modbus 슬레이브의 홀딩 레지스터 읽기.
+📌 port='COM3': 사용하는 포트를 설정해야 해. (장치 관리자에서 확인 가능)
+📌 baudrate=9600: 장치와 일치하는 보드레이트 설정.
+📌 parity, stopbits, bytesize: 슬레이브 장치와 동일하게 설정해야 데이터가 정상적으로 전송돼.
+📌 read_holding_registers: Modbus 슬레이브의 홀딩 레지스터 읽기.
