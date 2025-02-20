@@ -46,7 +46,7 @@ For windows: Python3 설치
 3. cmd -> pip install --upgrade pip -> pip install conan
 4. 경로로 이동 후 Agent 다운받기: git clone https://github.com/mtconnect/cppagent.git
 5. Environment Setup(개발 도구나 컴파일러가 제대로 작동할 수 있도록 환경 변수와 경로 등을 설정): "C:\Program Files (x86)\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
-6. conan create cppagent -pr cppagent/conan/profiles/vs64 --build=missing -o cpack=True.
+6. conan create cppagent -pr cppagent/conan/profiles/vs64 --build=missing -o cpack=True -o cpack_desintation=C:\Users\smsla\Documents\.
 
 For Linux:
 
