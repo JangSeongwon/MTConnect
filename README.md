@@ -113,7 +113,7 @@ IP 설정
 
 Port설정
 Adapter의 기본 포트는 MTConnect 표준에서 자주 7878로 사용됨. (Adapter가 설정된 포트 번호와 일치하면 됨)
-
+PLC 포트: 5000
 
 ```   
 
