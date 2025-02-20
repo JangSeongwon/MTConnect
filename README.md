@@ -8,6 +8,7 @@ Model명: XGB-XBC-DR20E
 Software: https://sol.ls-electric.com/ww/en/product/category/477?utm_source=lsehomepage&utm_medium=display&utm_campaign=lse_ww_plc_prod
 
 현재 통신 방법: Modbus RTU (직렬 통신(RS-232, RS-485) 기반)
+Linux USB 통신 확인: dmesg (pl2303 converter->ttyUSB0)
 
 Linux Modbus 통신용 필수 패키지 설:
       sudo apt update
