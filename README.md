@@ -41,6 +41,7 @@ CMAKE
 
 For Linux:
 
+정석: (현재 cmake시 date_config 오류 발생함)
 1. 필수 패키지 설치: sudo apt update / sudo apt install -y cmake g++ make git libboost-all-dev
 2. Source 다운로드: git clone https://github.com/mtconnect/cppagent.git -> cd cppagent 이동
 3. CMAKE이용 빌드: mkdir build / cd build
@@ -53,10 +54,23 @@ For Linux:
             3. make
             4. sudo make install
             5. 버전 확인: cmake --version
-            + Cmake 다시 설치할 때 (제거): sudo apt purge cmake -> sudo apt autoremove 
-      -> make -j$(nproc) / 실행 파일 생성 후 ./agent
-4. 빌드가 완료된 후 agent.cfg 파일을 수정하여 MTConnect Agent를 실행: ./agent -c agent.cfg
-5. agent.cfg 내에서 수
+            + Cmake 다시 설치할 때 (제거): sudo apt purge cmake -> sudo apt autoremove
+
+            Could not find LibXml2: sudo apt-get install libxml2-dev
+            Could not find package configuration provided by "date" with any of the following names: dataConfig.cmake date-config.cmake
+      -> make -j$(nproc) /
+
+대안: (Conan 사용)
+1. sudo apt install -y build-essential cmake gcc-11 g++-11 python3 python3-pip autoconf automake ruby ruby rake 
+      python3 -m pip install conan
+      echo 'export PATH=$HOME/.local/bin:$PATH' >> .bashrc
+2. git clone https://github.com/mtconnect/cppagent.git
+3. conan create cppagent -pr cppagent/conan/profiles/gcc --build=missing (cppagent있는 directory에서)
+      -> [Error] Default build profile: cd cppagent -> conan profile detect
+
+4. 실행 파일 생성 후 ./agent
+5. 빌드가 완료된 후 agent.cfg 파일을 수정하여 MTConnect Agent를 실행: ./agent -c agent.cfg
+6. agent.cfg 내에서 수
       Devices = devices.xml
       Adapters = adapter.cfg
       Port = 5000
