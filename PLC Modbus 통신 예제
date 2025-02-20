@@ -1,26 +1,26 @@
-from pymodbus.client import ModbusTcpClient
+from pymodbus.client import ModbusSerialClient
 
-# PLC IP 주소와 포트 설정 (Modbus TCP 기본 포트: 502)
-PLC_IP = "192.168.1.100"
-PLC_PORT = 502
-
-# Modbus TCP 클라이언트 생성
-client = ModbusTcpClient(PLC_IP, port=PLC_PORT)
+# Modbus RTU 설정
+client = ModbusSerialClient(
+    method='rtu',          # Modbus RTU 모드
+    port='/dev/ttyUSB0',   # 직렬 포트 (확인 필요)
+    baudrate=9600,         # 보드레이트 (PLC와 일치해야 함)
+    parity='N',            # 패리티 (N=없음, E=짝수, O=홀수)
+    stopbits=1,
+    bytesize=8,
+    timeout=1
+)
 
 # 연결 확인
 if client.connect():
     print("PLC 연결 성공!")
 
     # 레지스터 0번 주소부터 10개의 값을 읽음
-    result = client.read_holding_registers(0, 10)
+    result = client.read_holding_registers(0, 10, unit=1)  # unit=1: Modbus 장치 ID
     if result.isError():
         print("데이터 읽기 실패")
     else:
         print(f"레지스터 값: {result.registers}")
-
-    # PLC에 값 쓰기 (예: 레지스터 5번에 1234 저장)
-    client.write_register(5, 1234)
-    print("데이터 쓰기 완료")
 
     client.close()
 else:
@@ -28,5 +28,6 @@ else:
 
 
 
-+ client.read_holding_registers(0, 10): 0번 주소부터 10개 값 읽기
-+ client.write_register(5, 1234): 5번 주소 레지스터에 1234 값 쓰기
++ port='/dev/ttyUSB0': 리눅스의 직렬포트 사용 (USB to RS-485 변환기 사용 시 /dev/ttyUSB0)
++ baudrate=9600: PLC의 통신 속도와 일치해야 함
++ unit=1: Modbus 장치 ID
