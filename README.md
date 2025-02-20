@@ -53,6 +53,7 @@ For Linux:
             3. make
             4. sudo make install
             5. 버전 확인: cmake --version
+            + Cmake 다시 설치할 때 (제거): sudo apt purge cmake -> sudo apt autoremove 
       -> make -j$(nproc) / 실행 파일 생성 후 ./agent
 4. 빌드가 완료된 후 agent.cfg 파일을 수정하여 MTConnect Agent를 실행: ./agent -c agent.cfg
 5. agent.cfg 내에서 수
