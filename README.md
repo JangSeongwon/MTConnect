@@ -40,13 +40,17 @@ Release(Pre-built & Source): https://github.com/TrakHound/MTConnect.NET/releases
 
 Build method: https://github.com/mtconnect/cppagent?tab=readme-ov-file  
 
-For windows: Python3 설치
+For windows:
+
+기본-Python3 설치
 1. Visual studio에서 C++ 개발 환경이 필요: 설치 시 C++ CMake Tools for Windows 및 MSVC v142 이상이 설치 확인
 2. Conan / Ruby / Git 설치
 3. cmd -> pip install --upgrade pip -> pip install conan
 4. 경로로 이동 후 Agent 다운받기: git clone https://github.com/mtconnect/cppagent.git
 5. Environment Setup(개발 도구나 컴파일러가 제대로 작동할 수 있도록 환경 변수와 경로 등을 설정): "C:\Program Files (x86)\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
 6. conan create cppagent -pr cppagent/conan/profiles/vs64 --build=missing -o cpack=True -o cpack_desintation=C:\Users\smsla\Documents\.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 For Linux:
 
@@ -84,13 +88,22 @@ For Linux:
       Adapters = adapter.cfg
       Port = 5000
 
-Agent Run:
-1. 에이전트 실행: ./agent -c agent.cfg
-2. 웹 브라우저에서 데이터 확인
-      MTConnect Agent가 5000 포트에서 실행되면 http://localhost:5000으로 접속
-      http://localhost:5000/sample → 실시간 데이터 확인
-      http://localhost:5000/current → 현재 데이터 확인
+```
 
+Agent Run:
+```
+Windows
+1. Agent 폴더로 이동
+2. agent.exe 실행 (명령어 info 나오는거 활용. ex) agent.exe run)
+
+Linux
+1. Agent 폴더로 이동
+2. ./agent -c agent.cfg
+
+*웹 브라우저에서 데이터 확인
+   - MTConnect Agent가 5000 포트에서 실행되면 http://localhost:5000으로 접속
+   - http://localhost:5000/sample → 실시간 데이터 확인
+   - http://localhost:5000/current → 현재 데이터 확인
 
 ```   
 
