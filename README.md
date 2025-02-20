@@ -9,9 +9,14 @@ Software: https://sol.ls-electric.com/ww/en/product/category/477?utm_source=lseh
 
 현재 통신 방법: Modbus RTU (직렬 통신(RS-232, RS-485) 기반)
 
+Linux Modbus 통신용 필수 패키지 설:
+      sudo apt update
+      sudo apt install -y python3-pip
+      pip install pymodbus
+
 ```
 
-Agent Source
+Agent Build
 ```
 Windows & Linux
 Release(Pre-built & Source): https://github.com/TrakHound/MTConnect.NET/releases/tag/v6.6.0
@@ -32,6 +37,13 @@ For Linux:
       Devices = devices.xml
       Adapters = adapter.cfg
       Port = 5000
+
+Agent Run:
+1. 에이전트 실행: ./agent -c agent.cfg
+2. 웹 브라우저에서 데이터 확인
+      MTConnect Agent가 5000 포트에서 실행되면 http://localhost:5000으로 접속
+      http://localhost:5000/sample → 실시간 데이터 확인
+      http://localhost:5000/current → 현재 데이터 확인
 
 
 ```   
