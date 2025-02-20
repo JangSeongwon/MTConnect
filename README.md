@@ -43,7 +43,15 @@ For Linux:
 
 1. 필수 패키지 설치: sudo apt update / sudo apt install -y cmake g++ make git libboost-all-dev
 2. Source 다운로드: git clone https://github.com/mtconnect/cppagent.git -> cd cppagent 이동
-3. CMAKE이용 빌드: mkdir build / cd build / cmake .. (빌드) / make -j$(nproc) / 실행 파일 생성 후 ./agent
+3. CMAKE이용 빌드: mkdir build / cd build
+      -> cmake .. (빌드)
+            이때 버전이 안맞는 상황이 많음: Cmake는 직접 수동으로 다운받아 업데이트해야함 = https://cmake.org/download/
+            1. tar -svf 'file'
+            2. 해제한 파일로 이동 후, ./bootstrap
+            3. make
+            4. sudo make install
+            5. 버전 확인: cmake --version
+      -> make -j$(nproc) / 실행 파일 생성 후 ./agent
 4. 빌드가 완료된 후 agent.cfg 파일을 수정하여 MTConnect Agent를 실행: ./agent -c agent.cfg
 5. agent.cfg 내에서 수
       Devices = devices.xml
