@@ -1,0 +1,29 @@
+from pymodbus.client.sync import ModbusSerialClient
+
+# Modbus RTU 설정
+client = ModbusSerialClient(
+    method='rtu',               # RTU 모드 설정
+    port='COM3',                # Windows의 COM 포트 (알맞은 포트로 변경)
+    baudrate=9600,              # 보드레이트 설정
+    parity='N',                 # 패리티 설정 ('N', 'E', 'O' 중 선택)
+    stopbits=1,                 # 스톱 비트
+    bytesize=8,                 # 데이터 비트
+    timeout=1                   # 타임아웃 설정
+)
+
+# 클라이언트 연결 시도
+if client.connect():
+    print("Modbus RTU 연결 성공!")
+
+    # 예제: 슬레이브 장치의 레지스터 읽기 (주소: 1, 레지스터 시작 주소: 0, 개수: 1)
+    response = client.read_holding_registers(address=0, count=1, unit=1)
+
+    if response.isError():
+        print(f"읽기 실패: {response}")
+    else:
+        print(f"읽은 데이터: {response.registers}")
+
+    # 연결 종료
+    client.close()
+else:
+    print("Modbus RTU 연결 실패!")
