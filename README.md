@@ -105,6 +105,16 @@ Linux
    - http://localhost:5000/sample → 실시간 데이터 확인
    - http://localhost:5000/current → 현재 데이터 확인
 
+
+IP 설정
+1. 같은 컴퓨터에서 Adapter가 실행될 경우: 로컬 호스트 사용
+   -> cmd -> ipconfig
+2. 특정 네트워크에서 실행 중이라면 해당 컴퓨터의 IP 주소 입력
+
+Port설정
+Adapter의 기본 포트는 MTConnect 표준에서 자주 7878로 사용됨. (Adapter가 설정된 포트 번호와 일치하면 됨)
+
+
 ```   
 
 Programs & Tools needed
