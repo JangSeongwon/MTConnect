@@ -9,6 +9,9 @@ Software: https://sol.ls-electric.com/ww/en/product/category/477?utm_source=lseh
 
 현재 통신 방법: Modbus RTU (직렬 통신(RS-232, RS-485) 기반)
 
+-----   Windows Version   -----
+1. 필수 모드 설치: pip install pymodbus pyserial
+
 
 -----   Linux Version   -----
 Linux USB 통신 확인: dmesg (pl2303 converter->ttyUSB0)
