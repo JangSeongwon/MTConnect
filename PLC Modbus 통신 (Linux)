@@ -31,3 +31,5 @@ else:
 + port='/dev/ttyUSB0': 리눅스의 직렬포트 사용 (USB to RS-485 변환기 사용 시 /dev/ttyUSB0)
 + baudrate=9600: PLC의 통신 속도와 일치해야 함
 + unit=1: Modbus 장치 ID
+
+
