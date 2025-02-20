@@ -17,6 +17,14 @@ Linux Modbus 통신용 필수 패키지 설:
       sudo apt install -y python3-serial
       pip install pymodbus
 
+RTU 통신 확인 방법:
+modbus-cli 설치: pip install modbus-cli
+
+📌 Modbus RTU에서 10개의 레지스터 값 읽기
+modbus read /dev/ttyUSB0 0 10 --serial
+📌 PLC에 값 쓰기 (5번 레지스터에 1234 저장)
+modbus write 192.168.1.100 5 1234 --tcp
+
 ```
 
 Agent Build
