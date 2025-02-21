@@ -1,35 +1,46 @@
-from pymodbus.client.sync import ModbusSerialClient
+import socket
+import time
+from pymodbus.client import ModbusSerialClient
 
-# Modbus RTU 설정
-client = ModbusSerialClient(
-    method='rtu',               # RTU 모드 설정
-    port='COM3',                # Windows의 COM 포트 (알맞은 포트로 변경)
-    baudrate=9600,              # 보드레이트 설정
-    parity='N',                 # 패리티 설정 ('N', 'E', 'O' 중 선택)
-    stopbits=1,                 # 스톱 비트
-    bytesize=8,                 # 데이터 비트
-    timeout=1                   # 타임아웃 설정
-)
+"""
+Creating Socket Objects
+본 프로그램이 돌아가는 PC의 IP address, Port를 입력
+"""
+HOST = 'localhost' #hostname 127.0.0.1
+PORT = 8080 #Portnumber
 
-# 클라이언트 연결 시도
-if client.connect():
-    print("Modbus RTU 연결 성공!")
+# Modbus RTU Client 설정
+modbus_client = ModbusSerialClient( port='COM3', baudrate=9600, stopbits=1)
 
-    # 예제: 슬레이브 장치의 레지스터 읽기 (주소: 1, 레지스터 시작 주소: 0, 개수: 1)
-    response = client.read_holding_registers(address=0, count=1, unit=1)
+# TCP 소켓 열기
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
+    server_socket.bind((HOST, PORT))
+    server_socket.listen(1)
+    print(f"Adapter listening on {HOST}:{PORT}...")
 
-    if response.isError():
-        print(f"읽기 실패: {response}")
-    else:
-        print(f"읽은 데이터: {response.registers}")
+    while True:
+        conn, addr = server_socket.accept()
+        print(f"Connection from {addr} established")
+        with conn:
+            while True:
+                # PLC에서 데이터 읽기
+                if modbus_client.connect():
+                    result = modbus_client.read_holding_registers(address=0, count=10)
+                    if not result.isError():
+                        plc_data = result.registers
+                        timestamp = time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime())
+                        mtconnect_data = f"TIME|{timestamp}\nDATA|PLC_Data|{plc_data[0]}\n"
 
-    # 연결 종료
-    client.close()
-else:
-    print("Modbus RTU 연결 실패!")
+                        # MTConnect Agent로 데이터 전송
+                        conn.sendall(mtconnect_data.encode('utf-8'))
+                        print(f"Sent data: {mtconnect_data}")
+                    modbus_client.close()
+
+                # 데이터 송신 후 1초 대기
+                time.sleep(1)
 
 
-📌 port='COM3': 사용하는 포트를 설정해야 해. (장치 관리자에서 확인 가능)
+📌 port='COM3': 사용하는 포트를 설정 (장치 관리자에서 확인 가능)
 📌 baudrate=9600: 장치와 일치하는 보드레이트 설정.
-📌 parity, stopbits, bytesize: 슬레이브 장치와 동일하게 설정해야 데이터가 정상적으로 전송돼.
-📌 read_holding_registers: Modbus 슬레이브의 홀딩 레지스터 읽기.
+📌 parity, stopbits, bytesize: 슬레이브 장치와 동일하게 설정
+📌 read_holding_registers: Modbus 슬레이브의 홀딩 레지스터 읽기
