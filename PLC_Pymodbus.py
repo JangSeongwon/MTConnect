@@ -1,3 +1,5 @@
+# Python 3.11.9 버전 작성
+# PLC PC 기본 통신 코
 
 from pymodbus.client import ModbusSerialClient
 
