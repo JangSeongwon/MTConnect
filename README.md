@@ -23,6 +23,10 @@ PLC 프로그램 작성 -> STOP모드에서 쓰기 실행 / 읽기 실행
 2. Modbus RTU 설정
 3. 'PLC_Pymodbus' 해당 코드 확인
 
+참고 사이트:
+1. PyModBus: https://pymodbus.readthedocs.io/en/latest/source/client.html
+1. https://fortex66.tistory.com/13
+2. https://lubly0104.tistory.com/10
 
 -----   Linux Version   -----
 Linux USB 통신 확인: dmesg (pl2303 converter->ttyUSB0)
