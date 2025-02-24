@@ -20,14 +20,32 @@ Switch(P0001) -> INC -> D1000 설정 -> Device Monitor 확인 완료
 통신 모드: Modbus RTU Server (Data 바이너리 형식)
 (ASCII 데이터 코드 형식 가능)
 (P2P는 PLC끼리 통신, XGT는 XGT 시리즈의 LS 전용 프로토콜)
+
+In Python
 1. 필수 모드 설치: pip install pymodbus pyserial
 2. Modbus RTU 설정
 3. 'PLC_Pymodbus' 해당 코드 확인
 
 참고 사이트:
 1. PyModBus: https://pymodbus.readthedocs.io/en/latest/source/client.html
-1. https://fortex66.tistory.com/13
-2. https://lubly0104.tistory.com/10
+2. https://fortex66.tistory.com/13
+3. https://lubly0104.tistory.com/10
+
+In C#
+1. 프로젝트 생성 (Template: C# Console App (.NET Core) 또는 **C# Console App (.NET Framework))
+2. Program.cs 수정
+3. 패키지 없을 경우
+      ex) NModbus4
+         1. Tools -> Nuget Package Manager
+         2. Manage Nuget package for solution -> Browse
+4. SerialPort 없을 경우
+       1. View -> Terminal
+       2. 프로젝트 경로로 이동 (csproj 있는 위치)
+       3. dotnet add package System.IO.Ports
+
+참고 사이트:
+1. PLC 대표 블로그 = https://cafe.naver.com/developautomation
+2. https://m.blog.naver.com/PostView.naver?blogId=js__daybyday&logNo=222963701800&navType=by
 
 -----   Linux Version   -----
 Linux USB 통신 확인: dmesg (pl2303 converter->ttyUSB0)
