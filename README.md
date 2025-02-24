@@ -8,7 +8,11 @@ Model명: XGB-XBC-DR20E
 Software: https://sol.ls-electric.com/ww/en/product/category/477?utm_source=lsehomepage&utm_medium=display&utm_campaign=lse_ww_plc_prod
 Online Settings: Connection settings 설정(RS-232C / 포트 COM 확인)
 PLC 프로그램 작성 -> STOP모드에서 쓰기 실행 / 읽기 실행
-통신확인 프로그램 Realterm 사용: https://sourceforge.net/projects/realterm/
+
+----- Realterm -----
+통신확인 프로그램 Realterm 다운: https://sourceforge.net/projects/realterm/
+설정: [Port] Baud 설정 / Port 설정 / Parity 및 Data bits 및 Hardware flow control 설정 / Open
+참고: https://sonar2.tistory.com/96
 
 -----   Windows Version   -----
 1. 필수 모드 설치: pip install pymodbus pyserial
