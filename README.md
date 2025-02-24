@@ -14,6 +14,7 @@ PLC 프로그램 작성 -> STOP모드에서 쓰기 실행 / 읽기 실행
 설정: [Port] Baud 설정 / Port 설정 / Parity 및 Data bits 및 Hardware flow control 설정 / Open
 참고: https://sonar2.tistory.com/96
 
+-----  기본 통신 프로그램 작성  -----
 -----   Windows Version   -----
 1. 필수 모드 설치: pip install pymodbus pyserial
 2. PLC의 Modbus RTU 슬레이브 설정 (LS XG5000 SW 활용)
