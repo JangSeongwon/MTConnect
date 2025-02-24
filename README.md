@@ -16,12 +16,12 @@ PLC 프로그램 작성 -> STOP모드에서 쓰기 실행 / 읽기 실행
 
 -----  기본 통신 프로그램 작성  -----
 -----   Windows Version   -----
+통신 모드: Modbus RTU Server (Data 바이너리 형식)
+(ASCII 데이터 코드 형식 가능)
+(P2P는 PLC끼리 통신, XGT는 XGT 시리즈의 LS 전용 프로토콜)
 1. 필수 모드 설치: pip install pymodbus pyserial
-2. PLC의 Modbus RTU 슬레이브 설정 (LS XG5000 SW 활용)
-      1) 
-      
-3. 레지스터 주소 매핑: PLC의 데이터를 특정 Modbus 레지스터(예: Holding Register)에 매핑.
-4. Modbus 통신 설정: 보드레이트 (예: 9600) / 데이터 비트 (예: 8) / 패리티 (예: None) / 정지 비트 (예: 1)
+2. Modbus RTU 설정
+3. 'PLC_Pymodbus' 해당 코드 확인
 
 
 -----   Linux Version   -----
