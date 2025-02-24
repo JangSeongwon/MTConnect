@@ -6,8 +6,8 @@ PLC 자료
 LS Electric 
 Model명: XGB-XBC-DR20E   
 Software: https://sol.ls-electric.com/ww/en/product/category/477?utm_source=lsehomepage&utm_medium=display&utm_campaign=lse_ww_plc_prod
-
-현재 통신 방법: Modbus RTU (직렬 통신(RS-232, RS-485) 기반)
+Online Settings: Connection settings 설정(RS-232C / 포트 COM 확인)
+PLC 프로그램 작성 -> STOP모드에서 쓰기 실행 / 읽기 실행
 
 -----   Windows Version   -----
 1. 필수 모드 설치: pip install pymodbus pyserial
