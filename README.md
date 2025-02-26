@@ -21,6 +21,10 @@ Switch(P0001) -> INC -> D1000 설정 -> Device Monitor 확인 완료
 (ASCII 데이터 코드 형식 가능)
 (P2P는 PLC끼리 통신, XGT는 XGT 시리즈의 LS 전용 프로토콜)
 
+**통신 에러 해결 처리**
+1. Modbus의 경우 프로그램 modpoll 이용: 사이트 https://www.modbusdriver.com/
+2. 다운로드 -> cmd -> .exe 경로 -> modpoll -h 
+
 In Python
 1. 필수 모드 설치: pip install pymodbus pyserial
 2. Modbus RTU 설정
