@@ -74,7 +74,7 @@ modbus write 192.168.1.100 5 1234 --tcp
 
 ```
 
-### Agent Build
+### Agent Build 방법 
 ```
 Windows & Linux
 Release(Pre-built & Source): https://github.com/TrakHound/MTConnect.NET/releases/tag/v6.6.0
@@ -138,7 +138,7 @@ For Linux:
 
 ```
 
-### Agent Run:
+### Agent 실행 방법  
 ```
 Windows
 1. Agent 폴더로 이동
