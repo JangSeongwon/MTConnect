@@ -30,11 +30,11 @@ if client.connect():
     print('Read', result)
 
     if result.isError():
-        print("읽기 실패:", result)
+        print("Reading Fail:", result)
     else:
-        print("PLC 데이터:", result.registers)
+        print("PLC Data read:", result.registers)
 
     client.close()
 else:
-    print("Modbus 연결 실패!")
+    print("Modbus Connect Fail!")
 
