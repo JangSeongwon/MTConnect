@@ -88,6 +88,13 @@ For windows:
 5. Environment Setup(개발 도구나 컴파일러가 제대로 작동할 수 있도록 환경 변수와 경로 등을 설정): "C:\Program Files (x86)\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
 6. conan create cppagent -pr cppagent/conan/profiles/vs64 --build=missing -o cpack=True -o cpack_desintation=C:\Users\smsla\Documents\.
 
++수동 빌드용 (CMAKE)
+빌드용 툴(프로그램) 위치:  C:\Users\jj22j\tools\
+Error Solution list (Windows)
+1. Error with Cmake and boost Could NOT find Boost (missing: program_options) : https://sourceforge.net/projects/boost/files/boost-binaries/1.78.0/
+
+2. Could+NOT+find+LibXml2 : https://pages.lip6.fr/Jean-Francois.Perrot/XML-Int/Session1/WinLibxml.html 
+  => CMAKE시 Enviornments Path에 추가 OR Error 뜨는 항목에 PATH 수동 추가 (이방법은 맨 위 Path만 추가하면 됨)
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 For Linux:
