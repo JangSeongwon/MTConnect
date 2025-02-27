@@ -1,6 +1,8 @@
 # MTConnect
 
-# PLC 자료
+## PLC 자료
+
+### 기본 정보
 ```   
 LS Electric 
 Model명: XGB-XBC-DR20E   
