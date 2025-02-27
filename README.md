@@ -11,33 +11,31 @@ Online Settings: Connection settings 설정(RS-232C / 포트 COM 확인)
 PLC 프로그램 작성 -> STOP모드에서 쓰기 실행 / 읽기 실행
 Switch(P0001) -> INC -> D1000 설정 -> Device Monitor 확인 완료
 
------ Realterm -----
-통신확인 프로그램 Realterm 다운: https://sourceforge.net/projects/realterm/
-설정: [Port] Baud 설정 / Port 설정 / Parity 및 Data bits 및 Hardware flow control 설정 / Open
-참고: https://sonar2.tistory.com/96
+*Modbus 통신 에러 확인 프로그램*
+1. Modbus의 경우 프로그램 modpoll 이용: 사이트 https://www.modbusdriver.com/
+2. 다운로드 -> cmd -> .exe 경로 -> modpoll -h
+3. OR 카페 출처 프로그램 CNET사용   
+```   
 
------  기본 통신 프로그램 작성  -----
+### 통신 코드 
 -----   Windows Version   -----
 통신 모드: Modbus RTU Server (Data 바이너리 형식)
 (ASCII 데이터 코드 형식 가능)
 (P2P는 PLC끼리 통신, XGT는 XGT 시리즈의 LS 전용 프로토콜)
-
-*Modbus 통신 에러 확인 프로그램*
-1. Modbus의 경우 프로그램 modpoll 이용: 사이트 https://www.modbusdriver.com/
-2. 다운로드 -> cmd -> .exe 경로 -> modpoll -h
-3. OR 카페 출처 프로그램 CNET사용
-
-
-In Python
+   
+```   
+In Python: PLC_Pymodbus.py
 1. 필수 모드 설치: pip install pymodbus pyserial
 2. Modbus RTU 설정
-3. 'PLC_Pymodbus' 해당 코드 확인
 
 참고 사이트:
 1. PyModBus: https://pymodbus.readthedocs.io/en/latest/source/client.html
 2. https://fortex66.tistory.com/13
-3. https://lubly0104.tistory.com/10
+3. https://lubly0104.tistory.com/10   
+```   
+- - -
 
+```   
 In C#
 1. 프로젝트 생성 (Template: C# Console App (.NET Core) 또는 **C# Console App (.NET Framework))
 2. Program.cs 수정
@@ -52,8 +50,10 @@ In C#
 
 참고 사이트:
 1. PLC 대표 블로그 = https://cafe.naver.com/developautomation
-2. https://m.blog.naver.com/PostView.naver?blogId=js__daybyday&logNo=222963701800&navType=by
-
+2. https://m.blog.naver.com/PostView.naver?blogId=js__daybyday&logNo=222963701800&navType=by   
+```
+   
+```   
 -----   Linux Version   -----
 Linux USB 통신 확인: dmesg (pl2303 converter->ttyUSB0)
 Linux Modbus 통신용 필수 패키지 설:
