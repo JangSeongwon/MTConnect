@@ -17,8 +17,8 @@ Switch(P0001) -> INC -> D1000 설정 -> Device Monitor 확인 완료
 3. OR 카페 출처 프로그램 CNET사용   
 ```   
 
-### 통신 코드 
------   Windows Version   -----
+### 통신 코드    
+-----   Windows Version   -----    
 통신 모드: Modbus RTU Server (Data 바이너리 형식)
 (ASCII 데이터 코드 형식 가능)
 (P2P는 PLC끼리 통신, XGT는 XGT 시리즈의 LS 전용 프로토콜)
@@ -36,7 +36,7 @@ In Python: PLC_Pymodbus.py
 - - -
 
 ```   
-In C#
+In C#: Program.cs   
 1. 프로젝트 생성 (Template: C# Console App (.NET Core) 또는 **C# Console App (.NET Framework))
 2. Program.cs 수정
 3. 패키지 없을 경우
@@ -74,7 +74,7 @@ modbus write 192.168.1.100 5 1234 --tcp
 
 ```
 
-Agent Build
+### Agent Build
 ```
 Windows & Linux
 Release(Pre-built & Source): https://github.com/TrakHound/MTConnect.NET/releases/tag/v6.6.0
@@ -138,7 +138,7 @@ For Linux:
 
 ```
 
-Agent Run:
+### Agent Run:
 ```
 Windows
 1. Agent 폴더로 이동
@@ -165,7 +165,7 @@ PLC 포트: 5000
 
 ```   
 
-Programs & Tools needed
+### Programs & Tools needed
 ```   
 
 https://rubyinstaller.org/ : Ruby+Devkit 3.3.7-1 (x64) 
