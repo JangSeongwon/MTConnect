@@ -143,6 +143,7 @@ For Linux:
 Windows
 1. Agent 폴더로 이동
 2. agent.exe 실행 (명령어 info 나오는거 활용. ex) agent.exe run)
+3. Directory: D:\대한항공-조립로봇과제\MTConnect\JSW_Agent>
 
 Linux
 1. Agent 폴더로 이동
