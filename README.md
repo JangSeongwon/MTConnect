@@ -93,7 +93,7 @@ For windows:
    "C:\Program Files (x86)\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
 6. 해당 경로에서 Conan default 생성: conan profile detect
 7. conan create cppagent -pr cppagent/conan/profiles/vs64 --build=missing -o cpack=True -o cpack_destination=C:\Users\smsla\Documents\.
-8. agent.cfg에서 ../부분 모두 하나씩 제거해야함 (경로 설정)
+8. 생성한 agent를 생성된 폴더내에서 긁어 와서 옮겨놓을경우 agent.cfg에서 ../부분 모두 하나씩 제거해야함 (경로 설정)
 
 +수동 빌드용 (CMAKE)
 빌드용 툴(프로그램) 위치:  C:\Users\jj22j\tools\
