@@ -26,6 +26,7 @@ Switch(P0001) -> INC -> D1000 설정 -> Device Monitor 확인 완료
 ```   
 In Python: PLC_Pymodbus.py
 1. 필수 모드 설치: pip install pymodbus pyserial
+   Visual studio code에서 안읽힐 때: Ctrl+Shift+P 누르고 Python: Select Interpreter 확인
 2. Modbus RTU 설정
 
 참고 사이트:
