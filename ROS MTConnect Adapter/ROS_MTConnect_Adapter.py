@@ -72,11 +72,21 @@ if __name__ == "__main__":
         
         posj_result = call_robot_posj_service()
         if posj_result is not None:
-            adapter.update_data("robot_posj", posj_result)
+            adapter.update_data("DR_M_posj_jo", posj_result[0])
+            adapter.update_data("DR_M_posj_j1", posj_result[1])
+            adapter.update_data("DR_M_posj_j2", posj_result[2])
+            adapter.update_data("DR_M_posj_j3", posj_result[3])
+            adapter.update_data("DR_M_posj_j4", posj_result[4])
+            adapter.update_data("DR_M_posj_j5", posj_result[5])
 
         posx_result = call_robot_posx_service()
         if posx_result is not None:
-            adapter.update_data("robot_posx", posx_result)
+            adapter.update_data("DR_M_posx_X", posx_result[0])
+            adapter.update_data("DR_M_posx_Y", posx_result[1])
+            adapter.update_data("DR_M_posx_Z", posx_result[2])
+            adapter.update_data("DR_M_posx_Rx", posx_result[3])
+            adapter.update_data("DR_M_posx_Ry", posx_result[4])
+            adapter.update_data("DR_M_posx_Rz", posx_result[5])
 
         solutionspace_result = call_robot_solutionspace_service()
         if solutionspace_result is not None:
@@ -86,10 +96,10 @@ if __name__ == "__main__":
         if mode_result is not None:
             adapter.update_data("robot_mode_id", mode_result)
 
-        print(posj_result)
-        print(posx_result)
-        print(solutionspace_result)
-        print(mode_result)
+        # print(posj_result)
+        # print(posx_result)
+        # print(solutionspace_result)
+        # print(mode_result)
 
         rate.sleep()
 
