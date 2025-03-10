@@ -1,19 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<MTConnectDevices xmlns:mt="urn:mtconnect.org:MTConnectDevices:2.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="urn:mtconnect.org:MTConnectDevices:2.0"
-  xsi:schemaLocation="urn:mtconnect.org:MTConnectDevices:2.0 https://schemas.mtconnect.org/schemas/MTConnectDevices_2.0.xsd">
-  <Header deviceModelChangeTime="2022-06-17T16:33:21.188094Z" creationTime="2013-04-02T03:40:04Z"
-    assetBufferSize="1024" sender="localhost" assetCount="0" version="2.0" instanceId="1"
-    bufferSize="131072"/>
+<MTConnectDevices xmlns="urn:mtconnect.org:MTConnectDevices:2.5" xmlns:xsi="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="urn:mtconnect.org:MTConnectDevices:1.7 schema/MTConnectDevices_1.7.xsd">
+  <Header version="2.5.0" creationTime="2021-11-9T00:00:00Z" instanceId="1" sender="vt-data-02" bufferSize="131111" assetBufferSize="1000" assetCount="0"/>
   <Devices>
-	  <Device uuid="PLC" name="PLC" id="PLC">
+    <Device id="DSR" uuid="DR1 1509" name="DR1_1509" mtconnectVersion="2.5">           
+      <DataItems>
+            <DataItem category="EVENT" id="robot_mode_id" name="DR_M_mode" type="PROGRAM_STATE"/>
+            <DataItem category="SAMPLE" id="j0" name="DR_M_posj_j0" type="joint_angle"  units="degrees"/>
+            <DataItem category="SAMPLE" id="j1" name="DR_M_posj_j1" type="joint_angle" units="degrees"/>
+            <DataItem category="SAMPLE" id="j2" name="DR_M_posj_j2" type="joint_angle" units="degrees"/>
+            <DataItem category="SAMPLE" id="j3" name="DR_M_posj_j3" type="joint_angle" units="degrees"/>
+            <DataItem category="SAMPLE" id="j4" name="DR_M_posj_j4" type="joint_angle" units="degrees"/>
+            <DataItem category="SAMPLE" id="j5" name="DR_M_posj_j5" type="joint_angle" units="degrees"/>
+            <DataItem category="SAMPLE" id="X" name="DR_M_posx_X" type="Position" units="millimeter"/>
+            <DataItem category="SAMPLE" id="Y" name="DR_M_posx_Y" type="Position" units="millimeter"/>
+            <DataItem category="SAMPLE" id="Z" name="DR_M_posx_Z" type="Position" units="millimeter"/>
+            <DataItem category="SAMPLE" id="Rx" name="DR_M_posx_Rx" type="Orientation" units="rad"/>
+            <DataItem category="SAMPLE" id="Ry" name="DR_M_posx_Ry" type="Orientation" units="rad"/>
+            <DataItem category="SAMPLE" id="Rz" name="DR_M_posx_Rz" type="Orientation" units="rad"/>
+            <DataItem category="SAMPLE" id="Solution_space" name="DR_M_solutionspace" type="Space"/>
+      </DataItems>
+		<Compositions>
+		  <Composition id="GripperControl" type="GRIPPER"/>
+		</Compositions>
+    </Device>
+    <Device uuid="PLC" name="PLC" id="PLC">
 		  <Description> PLC XGB-XBC-DR20E MTConnect </Description>
 		  <DataItems>
 			  <DataItem id="Switch Number" name="Switch" type="Switch" category="SAMPLE" units="Incremental"/>
-		  </DataItems>
-			  
+		  </DataItems>		  
 	  </Device>
-   
-  </Devices>
+  </Devices>	  
 </MTConnectDevices>
