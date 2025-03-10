@@ -173,6 +173,7 @@ Service 보내고 위 형식에 맞추어 response.??? 로 원하는 값만 추�
 
 ### Programs & Tools needed
 ```   
+Screen Recorder: sudo apt-get insatll simplescreenrecorder
 
 https://rubyinstaller.org/ : Ruby+Devkit 3.3.7-1 (x64) 
 
