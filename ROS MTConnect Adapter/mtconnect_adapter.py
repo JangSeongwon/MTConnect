@@ -31,6 +31,7 @@ class MTConnectAdapter:
         while self.running:
             try:
                 data_str = self.format_data_for_mtconnect()
+                print("ROS Data Update : ", data_str)
                 conn.sendall(data_str.encode('utf-8'))
                 time.sleep(0.5)  # 0.5초 간격 예시
             except (BrokenPipeError, ConnectionResetError):
@@ -48,7 +49,6 @@ class MTConnectAdapter:
     def update_data(self, key, value):
         # ROS 데이터 저장
         self.current_data[key] = value
-        print("ROS Data Update :", self.current_data)
 
     def stop(self):
         self.running = False
