@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MTConnectDevices xmlns:mt="urn:mtconnect.org:MTConnectDevices:2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="urn:mtconnect.org:MTConnectDevices:2.0"
+  xsi:schemaLocation="urn:mtconnect.org:MTConnectDevices:2.0 https://schemas.mtconnect.org/schemas/MTConnectDevices_2.0.xsd">
+  <Header deviceModelChangeTime="2022-06-17T16:33:21.188094Z" creationTime="2013-04-02T03:40:04Z"
+    assetBufferSize="1024" sender="localhost" assetCount="0" version="2.0" instanceId="1"
+    bufferSize="131072"/>
+  <Devices>
+	  <Device uuid="PLC" name="PLC" id="PLC">
+		  <Description> PLC XGB-XBC-DR20E MTConnect </Description>
+		  <DataItems>
+			  <DataItem id="Switch Number" name="Switch" type="Switch" category="SAMPLE" units="Incremental"/>
+		  </DataItems>
+			  
+	  </Device>
+   
+  </Devices>
+</MTConnectDevices>
