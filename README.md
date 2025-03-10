@@ -26,7 +26,6 @@ Switch(P0001) -> INC -> D1000 설정 -> Device Monitor 확인 완료
 ```   
 In Python: PLC_Pymodbus.py
 1. 필수 모드 설치: pip install pymodbus pyserial
-   Visual studio code에서 안읽힐 때: Ctrl+Shift+P 누르고 Python: Select Interpreter 확인
 2. Modbus RTU 설정
 
 참고 사이트:
@@ -61,17 +60,11 @@ Linux Modbus 통신용 필수 패키지 설:
       sudo apt update
       sudo apt install -y python3-pip
       pip install pymodbus
-      +RTU용
       sudo apt install -y python3-serial
       pip install pymodbus
 
-RTU 통신 확인 방법:
-modbus-cli 설치: pip install modbus-cli
-
-📌 Modbus RTU에서 10개의 레지스터 값 읽기
-modbus read /dev/ttyUSB0 0 10 --serial
-📌 PLC에 값 쓰기 (5번 레지스터에 1234 저장)
-modbus write 192.168.1.100 5 1234 --tcp
+*Visual studio code에서 안읽힐 때: Ctrl+Shift+P 누르고 Python: Select Interpreter 확인
+*Permission denied in Ubuntu = sudo chmod 666 /dev/ttyUSB0 입력
 
 ```
 
