@@ -163,6 +163,12 @@ Port설정
 Adapter의 기본 포트는 MTConnect 표준에서 자주 7878로 사용됨. (Adapter가 설정된 포트 번호와 일치하면 됨)
 PLC 포트: 5000
 
+```
+
+### ROS
+``` 
+ROS Service: Msgs 형식 파일 위치 = catkin_sw/devel/lib/python3/dist-packages/dsr_msgs/srv
+Service 보내고 위 형식에 맞추어 response.??? 로 원하는 값만 추출함 
 ```   
 
 ### Programs & Tools needed
