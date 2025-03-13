@@ -2,27 +2,47 @@
 <MTConnectDevices xmlns="urn:mtconnect.org:MTConnectDevices:2.5" xmlns:xsi="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="urn:mtconnect.org:MTConnectDevices:1.7 schema/MTConnectDevices_1.7.xsd">
   <Header version="2.5.0" creationTime="2021-11-9T00:00:00Z" instanceId="1" sender="vt-data-02" bufferSize="131111" assetBufferSize="1000" assetCount="0"/>
   <Devices>
-    <Device id="DSR" uuid="DR1 1509" name="DR1_1509" mtconnectVersion="2.5">           
+    <Device id="DR_M1013" uuid="DR_M1013" name="DR_M1013" mtconnectVersion="2.5">           
       <DataItems>
-            <DataItem category="EVENT" id="robot_mode_id" name="DR_M_mode" type="PROGRAM_STATE"/>
-            <DataItem category="SAMPLE" id="j0" name="DR_M_posj_j0" type="joint_angle"  units="degrees"/>
-            <DataItem category="SAMPLE" id="j1" name="DR_M_posj_j1" type="joint_angle" units="degrees"/>
-            <DataItem category="SAMPLE" id="j2" name="DR_M_posj_j2" type="joint_angle" units="degrees"/>
-            <DataItem category="SAMPLE" id="j3" name="DR_M_posj_j3" type="joint_angle" units="degrees"/>
-            <DataItem category="SAMPLE" id="j4" name="DR_M_posj_j4" type="joint_angle" units="degrees"/>
-            <DataItem category="SAMPLE" id="j5" name="DR_M_posj_j5" type="joint_angle" units="degrees"/>
-            <DataItem category="SAMPLE" id="X" name="DR_M_posx_X" type="Position" units="millimeter"/>
-            <DataItem category="SAMPLE" id="Y" name="DR_M_posx_Y" type="Position" units="millimeter"/>
-            <DataItem category="SAMPLE" id="Z" name="DR_M_posx_Z" type="Position" units="millimeter"/>
-            <DataItem category="SAMPLE" id="Rx" name="DR_M_posx_Rx" type="Orientation" units="rad"/>
-            <DataItem category="SAMPLE" id="Ry" name="DR_M_posx_Ry" type="Orientation" units="rad"/>
-            <DataItem category="SAMPLE" id="Rz" name="DR_M_posx_Rz" type="Orientation" units="rad"/>
-            <DataItem category="SAMPLE" id="Solution_space" name="DR_M_solutionspace" type="Space"/>
+            <DataItem category="EVENT" id="M1013_mode_id" name="M1013_mode_id" type="PROGRAM_STATE"/>
+            <DataItem category="SAMPLE" id="M1013_j0" name="M1013_j0" type="joint_angle"  units="degrees"/>
+            <DataItem category="SAMPLE" id="M1013_j1" name="M1013_j1" type="joint_angle" units="degrees"/>
+            <DataItem category="SAMPLE" id="M1013_j2" name="M1013_j2" type="joint_angle" units="degrees"/>
+            <DataItem category="SAMPLE" id="M1013_j3" name="M1013_j3" type="joint_angle" units="degrees"/>
+            <DataItem category="SAMPLE" id="M1013_j4" name="M1013_j4" type="joint_angle" units="degrees"/>
+            <DataItem category="SAMPLE" id="M1013_j5" name="M1013_j5" type="joint_angle" units="degrees"/>
+            <DataItem category="SAMPLE" id="M1013_X" name="M1013_X" type="Position" units="millimeter"/>
+            <DataItem category="SAMPLE" id="M1013_Y" name="M1013_Y" type="Position" units="millimeter"/>
+            <DataItem category="SAMPLE" id="M1013_Z" name="M1013_Z" type="Position" units="millimeter"/>
+            <DataItem category="SAMPLE" id="M1013_Rx" name="M1013_Rx" type="Orientation" units="rad"/>
+            <DataItem category="SAMPLE" id="M1013_Ry" name="M1013_Ry" type="Orientation" units="rad"/>
+            <DataItem category="SAMPLE" id="M1013_Rz" name="M1013_Rz" type="Orientation" units="rad"/>
+            <DataItem category="SAMPLE" id="M1013_Solution_space" name="M1013_solutionspace" type="Space"/>
       </DataItems>
 		<Compositions>
 		  <Composition id="GripperControl" type="GRIPPER"/>
 		</Compositions>
     </Device>
+
+    <Device id="DR_A0912" uuid="DR_A0912" name="DR_A0912" mtconnectVersion="2.5">           
+      <DataItems>
+            <DataItem category="EVENT" id="A0912_mode_id" name="A0912_mode_id" type="PROGRAM_STATE"/>
+            <DataItem category="SAMPLE" id="A0912_j0" name="A0912_j0" type="joint_angle"  units="degrees"/>
+            <DataItem category="SAMPLE" id="A0912_j1" name="A0912_j1" type="joint_angle" units="degrees"/>
+            <DataItem category="SAMPLE" id="A0912_j2" name="A0912_j2" type="joint_angle" units="degrees"/>
+            <DataItem category="SAMPLE" id="A0912_j3" name="A0912_j3" type="joint_angle" units="degrees"/>
+            <DataItem category="SAMPLE" id="A0912_j4" name="A0912_j4" type="joint_angle" units="degrees"/>
+            <DataItem category="SAMPLE" id="A0912_j5" name="A0912_j5" type="joint_angle" units="degrees"/>
+            <DataItem category="SAMPLE" id="A0912_X" name="A0912_X" type="Position" units="millimeter"/>
+            <DataItem category="SAMPLE" id="A0912_Y" name="A0912_Y" type="Position" units="millimeter"/>
+            <DataItem category="SAMPLE" id="A0912_Z" name="A0912_Z" type="Position" units="millimeter"/>
+            <DataItem category="SAMPLE" id="A0912_Rx" name="A0912_Rx" type="Orientation" units="rad"/>
+            <DataItem category="SAMPLE" id="A0912_Ry" name="A0912_Ry" type="Orientation" units="rad"/>
+            <DataItem category="SAMPLE" id="A0912_Rz" name="A0912_Rz" type="Orientation" units="rad"/>
+            <DataItem category="SAMPLE" id="A0912_Solution_space" name="A0912_solutionspace" type="Space"/>
+      </DataItems>
+    </Device>
+
     <Device uuid="PLC" name="PLC" id="PLC">
 		  <Description> PLC XGB-XBC-DR20E MTConnect </Description>
 		  <DataItems>
