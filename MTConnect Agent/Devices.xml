@@ -17,6 +17,7 @@
             <DataItem category="SAMPLE" id="M1013_Rx" name="M1013_Rx" type="Orientation" units="rad"/>
             <DataItem category="SAMPLE" id="M1013_Ry" name="M1013_Ry" type="Orientation" units="rad"/>
             <DataItem category="SAMPLE" id="M1013_Rz" name="M1013_Rz" type="Orientation" units="rad"/>
+            <DataItem category="SAMPLE" id="M1013_Tcp" name="M1013_Tcp" />
             <DataItem category="SAMPLE" id="M1013_Solution_space" name="M1013_solutionspace" type="Space"/>
       </DataItems>
 		<Compositions>
@@ -39,6 +40,7 @@
             <DataItem category="SAMPLE" id="A0912_Rx" name="A0912_Rx" type="Orientation" units="rad"/>
             <DataItem category="SAMPLE" id="A0912_Ry" name="A0912_Ry" type="Orientation" units="rad"/>
             <DataItem category="SAMPLE" id="A0912_Rz" name="A0912_Rz" type="Orientation" units="rad"/>
+            <DataItem category="SAMPLE" id="A0912_Tcp" name="A0912_Tcp"/>
             <DataItem category="SAMPLE" id="A0912_Solution_space" name="A0912_solutionspace" type="Space"/>
       </DataItems>
     </Device>
