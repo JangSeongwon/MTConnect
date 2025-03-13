@@ -168,7 +168,10 @@ PLC 포트: 5000
 ### ROS
 ``` 
 ROS Service: Msgs 형식 파일 위치 = catkin_sw/devel/lib/python3/dist-packages/dsr_msgs/srv
-Service 보내고 위 형식에 맞추어 response.??? 로 원하는 값만 추출함 
+Service 보내고 위 형식에 맞추어 response.??? 로 원하는 값만 추출함
+
+ROS A0912 연결: roslaunch dsr_launcher dsr_moveit.launch mode:=real host:=192.168.137.50 port:=12345 model:=a0912
+
 ```   
 
 ### Programs & Tools needed
