@@ -55,12 +55,33 @@ def call_A0912_posx_service():
         return response.task_pos_info[0].data
     except rospy.ServiceException as e:
         rospy.logerr("Service call failed: %s", e)
-        return None    
+        return None
+       
+def call_M1013_tcp_service():
+    rospy.wait_for_service('/dsr01m1013/tcp/get_current_tcp')
+    try:
+        robot_tcp_srv = rospy.ServiceProxy('/dsr01m1013/tcp/get_current_tcp', GetCurrentTcpResponse)
+        response = robot_tcp_srv()
+        return response.info
+    except rospy.ServiceException as e:
+        rospy.logerr("Service call failed: %s", e)
+        return None     
+    
+def call_A0912_tcp_service():
+    rospy.wait_for_service('/dsr01a0912/tcp/get_current_tcp')
+    try:
+        robot_tcp_srv = rospy.ServiceProxy('/dsr01a0912/tcp/get_current_tcp', GetCurrentTcp)
+        response = robot_tcp_srv()
+        return response.info
+    except rospy.ServiceException as e:
+        rospy.logerr("Service call failed: %s", e)
+        return None 
+
 
 def call_M1013_solutionspace_service():
     rospy.wait_for_service('/dsr01m1013/aux_control/get_current_solution_space')
     try:
-        robot_solutionspace_srv = rospy.ServiceProxy('/dsr01m1013/aux_control/get_current_solution_space', GetCurrentSolutionSpace)
+        robot_solutionspace_srv = rospy.ServiceProxy('/dsr01m1013/aux_control/get_current_solution_space', GetCurrentTcp)
         response = robot_solutionspace_srv()
         return response.sol_space
     except rospy.ServiceException as e:
@@ -144,6 +165,15 @@ if __name__ == "__main__":
             adapter.update_data("A0912_Rx", A_posx_result[3])
             adapter.update_data("A0912_Ry", A_posx_result[4])
             adapter.update_data("A0912_Rz", A_posx_result[5])
+
+        """TCP Values of Doosan robot M1013 / A0912"""
+        M_tcp_result = call_M1013_tcp_service()
+        if M_tcp_result is not None:
+            adapter.update_data("M1013_TCP", M_tcp_result)
+
+        A_tcp_result = call_A0912_tcp_service()
+        if A_tcp_result is not None:
+            adapter.update_data("A0912_TCP", A_tcp_result)           
 
         M_solutionspace_result = call_M1013_solutionspace_service()
         if M_solutionspace_result is not None:
