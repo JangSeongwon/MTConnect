@@ -7,59 +7,96 @@ from std_msgs.msg import Float64MultiArray
 import std_msgs
 from std_msgs.msg import String
 
-ROBOT_ID = "dsr01"
-ROBOT_MODEL = "m1509"
-
 sys.dont_write_bytecode = True
 sys.path.append(os.path.abspath((os.path.join(os.path.dirname(__file__),"../../doosan-robot/common/imp"))))
 
-import DR_init
-DR_init.__dsr__id = ROBOT_ID
-DR_init.__dsr__model = ROBOT_MODEL
+# import DR_init
+# DR_init.__dsr__id = ROBOT_ID
+# DR_init.__dsr__model = ROBOT_MODEL
 from DSR_ROBOT import *
 
 from mtconnect_adapter import MTConnectAdapter
 
-def call_robot_posj_service():
-    rospy.wait_for_service('/dsr01m1509/aux_control/get_current_posj')
+def call_M1013_posj_service():
+    rospy.wait_for_service('/dsr01m1013/aux_control/get_current_posj')
     try:
-        robot_posj_srv = rospy.ServiceProxy('/dsr01m1509/aux_control/get_current_posj', GetCurrentPosj)
+        robot_posj_srv = rospy.ServiceProxy('/dsr01m1013/aux_control/get_current_posj', GetCurrentPosj)
         response = robot_posj_srv()
         return response.pos
     except rospy.ServiceException as e:
         rospy.logerr("Service call failed: %s", e)
         return None
 
-def call_robot_posx_service():
-    rospy.wait_for_service('/dsr01m1509/aux_control/get_current_posx')
+def call_A0912_posj_service():
+    rospy.wait_for_service('/dsr01a0912/aux_control/get_current_posj')
     try:
-        robot_posx_srv = rospy.ServiceProxy('/dsr01m1509/aux_control/get_current_posx', GetCurrentPosx)
+        robot_posj_srv = rospy.ServiceProxy('/dsr01a0912/aux_control/get_current_posj', GetCurrentPosj)
+        response = robot_posj_srv()
+        return response.pos
+    except rospy.ServiceException as e:
+        rospy.logerr("Service call failed: %s", e)
+        return None
+
+def call_M1013_posx_service():
+    rospy.wait_for_service('/dsr01m1013/aux_control/get_current_posx')
+    try:
+        robot_posx_srv = rospy.ServiceProxy('/dsr01m1013/aux_control/get_current_posx', GetCurrentPosx)
         response = robot_posx_srv()
         return response.task_pos_info[0].data
     except rospy.ServiceException as e:
         rospy.logerr("Service call failed: %s", e)
         return None
 
-def call_robot_solutionspace_service():
-    rospy.wait_for_service('/dsr01m1509/aux_control/get_current_solution_space')
+def call_A0912_posx_service():
+    rospy.wait_for_service('/dsr01a0912/aux_control/get_current_posx')
     try:
-        robot_solutionspace_srv = rospy.ServiceProxy('/dsr01m1509/aux_control/get_current_solution_space', GetCurrentSolutionSpace)
+        robot_posx_srv = rospy.ServiceProxy('/dsr01a0912/aux_control/get_current_posx', GetCurrentPosx)
+        response = robot_posx_srv()
+        return response.task_pos_info[0].data
+    except rospy.ServiceException as e:
+        rospy.logerr("Service call failed: %s", e)
+        return None    
+
+def call_M1013_solutionspace_service():
+    rospy.wait_for_service('/dsr01m1013/aux_control/get_current_solution_space')
+    try:
+        robot_solutionspace_srv = rospy.ServiceProxy('/dsr01m1013/aux_control/get_current_solution_space', GetCurrentSolutionSpace)
         response = robot_solutionspace_srv()
         return response.sol_space
     except rospy.ServiceException as e:
         rospy.logerr("Service call failed: %s", e)
         return None
 
-def call_status_service():
-    rospy.wait_for_service('/dsr01m1509/system/get_robot_mode')
+def call_A0912_solutionspace_service():
+    rospy.wait_for_service('/dsr01a0912/aux_control/get_current_solution_space')
     try:
-        robot_mode_srv = rospy.ServiceProxy('/dsr01m1509/system/get_robot_mode', GetRobotMode)
+        robot_solutionspace_srv = rospy.ServiceProxy('/dsr01a0912/aux_control/get_current_solution_space', GetCurrentSolutionSpace)
+        response = robot_solutionspace_srv()
+        return response.sol_space
+    except rospy.ServiceException as e:
+        rospy.logerr("Service call failed: %s", e)
+        return None
+
+def call_M1013_status_service():
+    rospy.wait_for_service('/dsr01m1013/system/get_robot_mode')
+    try:
+        robot_mode_srv = rospy.ServiceProxy('/dsr01m1013/system/get_robot_mode', GetRobotMode)
         response = robot_mode_srv()
         return response.robot_mode
     except rospy.ServiceException as e:
         rospy.logerr("Service call failed: %s", e)
         return None
-
+    
+def call_A0912_status_service():
+    rospy.wait_for_service('/dsr01a0912/system/get_robot_mode')
+    try:
+        robot_mode_srv = rospy.ServiceProxy('/dsr01a0912/system/get_robot_mode', GetRobotMode)
+        response = robot_mode_srv()
+        return response.robot_mode
+    except rospy.ServiceException as e:
+        rospy.logerr("Service call failed: %s", e)
+        return None
+    
 if __name__ == "__main__":
     rospy.init_node('status_client_node', anonymous=True)
 
@@ -70,36 +107,64 @@ if __name__ == "__main__":
     rate = rospy.Rate(10)  # 0.1 초에 한 번 -> 추후 프레임 검사 필수
     while not rospy.is_shutdown():
         
-        posj_result = call_robot_posj_service()
-        if posj_result is not None:
-            adapter.update_data("DR_M_posj_j0", posj_result[0])
-            adapter.update_data("DR_M_posj_j1", posj_result[1])
-            adapter.update_data("DR_M_posj_j2", posj_result[2])
-            adapter.update_data("DR_M_posj_j3", posj_result[3])
-            adapter.update_data("DR_M_posj_j4", posj_result[4])
-            adapter.update_data("DR_M_posj_j5", posj_result[5])
+        """Joint Values of Doosan robot M1013 / A0912"""
+        M_posj_result = call_M1013_posj_service()
+        if M_posj_result is not None:
+            adapter.update_data("M1013_j0", M_posj_result[0])
+            adapter.update_data("M1013_j1", M_posj_result[1])
+            adapter.update_data("M1013_j2", M_posj_result[2])
+            adapter.update_data("M1013_j3", M_posj_result[3])
+            adapter.update_data("M1013_j4", M_posj_result[4])
+            adapter.update_data("M1013_j5", M_posj_result[5])
 
-        posx_result = call_robot_posx_service()
-        if posx_result is not None:
-            adapter.update_data("DR_M_posx_X", posx_result[0])
-            adapter.update_data("DR_M_posx_Y", posx_result[1])
-            adapter.update_data("DR_M_posx_Z", posx_result[2])
-            adapter.update_data("DR_M_posx_Rx", posx_result[3])
-            adapter.update_data("DR_M_posx_Ry", posx_result[4])
-            adapter.update_data("DR_M_posx_Rz", posx_result[5])
+        A_posj_result = call_A0912_posj_service()
+        if A_posj_result is not None:
+            adapter.update_data("A0912_j0", A_posj_result[0])
+            adapter.update_data("A0912_j1", A_posj_result[1])
+            adapter.update_data("A0912_j2", A_posj_result[2])
+            adapter.update_data("A0912_j3", A_posj_result[3])
+            adapter.update_data("A0912_j4", A_posj_result[4])
+            adapter.update_data("A0912_j5", A_posj_result[5])
 
-        solutionspace_result = call_robot_solutionspace_service()
-        if solutionspace_result is not None:
-            adapter.update_data("DR_M_solutionspace", solutionspace_result)
+        """Pose Values of Doosan robot M1013 / A0912"""
+        M_posx_result = call_M1013_posx_service()
+        if M_posx_result is not None:
+            adapter.update_data("M1013_X", M_posx_result[0])
+            adapter.update_data("M1013_Y", M_posx_result[1])
+            adapter.update_data("M1013_Z", M_posx_result[2])
+            adapter.update_data("M1013_Rx", M_posx_result[3])
+            adapter.update_data("M1013_Ry", M_posx_result[4])
+            adapter.update_data("M1013_Rz", M_posx_result[5])
 
-        mode_result = call_status_service()
-        if mode_result is not None:
-            adapter.update_data("DR_M_mode_id", mode_result)
+        A_posx_result = call_A0912_posx_service()
+        if A_posx_result is not None:
+            adapter.update_data("A0912_X", A_posx_result[0])
+            adapter.update_data("A0912_Y", A_posx_result[1])
+            adapter.update_data("A0912_Z", A_posx_result[2])
+            adapter.update_data("A0912_Rx", A_posx_result[3])
+            adapter.update_data("A0912_Ry", A_posx_result[4])
+            adapter.update_data("A0912_Rz", A_posx_result[5])
 
-        # print(posj_result)
-        # print(posx_result)
-        # print(solutionspace_result)
-        # print(mode_result)
+        M_solutionspace_result = call_M1013_solutionspace_service()
+        if M_solutionspace_result is not None:
+            adapter.update_data("M1013_solutionspace", M_solutionspace_result)
+        
+        A_solutionspace_result = call_A0912_solutionspace_service()
+        if A_solutionspace_result is not None:
+            adapter.update_data("A0912_solutionspace", A_solutionspace_result)
+
+        M_mode_result = call_M1013_status_service()
+        if M_mode_result is not None:
+            adapter.update_data("M1013_mode_id", M_mode_result)
+
+        A_mode_result = call_A0912_status_service()
+        if A_mode_result is not None:
+            adapter.update_data("A0912_mode_id", A_mode_result)
+
+        # print(A_posj_result)
+        # print(A_posx_result)
+        # print(A_solutionspace_result)
+        # print(A_mode_result)
 
         rate.sleep()
 
