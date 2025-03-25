@@ -71,7 +71,7 @@ if __name__ == "__main__":
     adapter = MTConnectAdapter(host='127.0.0.1', port=7878)
     adapter.start()
 
-    rate = rospy.Rate(10)  # 0.1 초에 한 번 -> 추후 프레임 검사 필수
+    rate = rospy.Rate(50)  # 0.02 초에 한 번 -> 추후 프레임 검사 필수
     while not rospy.is_shutdown():
         
         """Doosan robot M1013"""
