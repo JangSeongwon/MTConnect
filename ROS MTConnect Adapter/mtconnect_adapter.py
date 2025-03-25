@@ -33,7 +33,7 @@ class MTConnectAdapter:
                 data_str = self.format_data_for_mtconnect()
                 print("ROS Data Update : ", data_str)
                 conn.sendall(data_str.encode('utf-8'))
-                time.sleep(0.5)  # 0.5초 간격 예시
+                time.sleep(0.05)  # 0.05초 간격 예시
             except (BrokenPipeError, ConnectionResetError):
                 break
 
