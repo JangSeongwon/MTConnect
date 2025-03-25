@@ -19,7 +19,7 @@ def call_A0912_posj_service():
     try:
         robot_posj_srv = rospy.ServiceProxy('/dsr01a0912/aux_control/get_current_posj', GetCurrentPosj)
         response = robot_posj_srv()
-        return response.pos
+        return [f"{value:.2f}" for value in response.pos]
     except rospy.ServiceException as e:
         rospy.logerr("Service call failed: %s", e)
         return None
@@ -29,7 +29,7 @@ def call_A0912_posx_service():
     try:
         robot_posx_srv = rospy.ServiceProxy('/dsr01a0912/aux_control/get_current_posx', GetCurrentPosx)
         response = robot_posx_srv()
-        return response.task_pos_info[0].data
+        return [f"{value:.2f}" for value in response.task_pos_info[0].data]
     except rospy.ServiceException as e:
         rospy.logerr("Service call failed: %s", e)
         return None  
