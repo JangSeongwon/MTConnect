@@ -1,4 +1,3 @@
-
 import requests
 import xml.etree.ElementTree as ET
 from datetime import datetime
@@ -62,12 +61,12 @@ def parse_mtconnect_data(xml_data):
                 timestamp_str = event.get("timestamp")
                 try:
                     # 마이크로초(µs)에서 나노초(ns)로 변환
-                    timestamp = int(datetime.strptime(timestamp_str, "%Y-%m-%dT%H:%M:%S.%fZ").timestamp() * 1e6) * 1000
+                    timestamp = int(datetime.strptime(timestamp_str, "%Y-%m-%dT%H:%M:%S.%fZ").timestamp() * 1e9)
                 except ValueError:
                     print(f"⛔ Timestamp format error: {timestamp_str}")
                     continue
 
-                if data_id == "Solution_space":
+                if data_id == "solutionspace":
                     value = f"{int(float(value))}i" # 정수 값에 `i` 추가
                 else:
                     value = float(value) # 부동소수점 값 변환
@@ -87,13 +86,13 @@ def parse_mtconnect_data(xml_data):
                 timestamp_str = sample.get("timestamp")
                 try:
                     # 마이크로초(µs)에서 나노초(ns)로 변환
-                    timestamp = int(datetime.strptime(timestamp_str, "%Y-%m-%dT%H:%M:%S.%fZ").timestamp() * 1e6) * 1000
+                    timestamp = int(datetime.strptime(timestamp_str, "%Y-%m-%dT%H:%M:%S.%fZ").timestamp() * 1e9)
                     print(timestamp_str)
                 except ValueError:
                     print(f"⛔ Timestamp format error: {timestamp_str}")
                     continue
 
-                if data_id == "Solution_space":
+                if data_id == "solutionspace":
                     value = f"{int(float(value))}i"
                 else:
                     value = float(value)
