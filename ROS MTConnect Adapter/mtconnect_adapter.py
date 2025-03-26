@@ -38,7 +38,7 @@ class MTConnectAdapter:
                 break
 
     def format_data_for_mtconnect(self):
-        timestamp = str(int(time.time()))  # epoch time
+        timestamp = str(int(time.time()) * 1000)  # epoch time
         data_items = []
 
         for key, value in self.current_data.items():
