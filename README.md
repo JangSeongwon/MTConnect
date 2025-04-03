@@ -163,6 +163,12 @@ Port설정
 Adapter의 기본 포트는 MTConnect 표준에서 자주 7878로 사용됨. (Adapter가 설정된 포트 번호와 일치하면 됨)
 PLC 포트: 5000
 
+Agent 내 Samples 추출:
+Path 예시 형식: //ROS//DataItem[@id="M1013_j0"]
+From: X부터
+Count: Y개를
+
+
 ```
 
 ### ROS
