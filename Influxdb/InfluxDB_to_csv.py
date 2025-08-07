@@ -13,12 +13,20 @@ def export_influxdb_to_csv():
     client.switch_database(INFLUXDB_DB)
 
     # 로봇 + switch
+    # query = f"""
+    # SELECT time,
+    #     "A0912_j0", "A0912_j1", "A0912_j2", "A0912_j3", "A0912_j4", "A0912_j5",
+    #     "A0912_X", "A0912_Y", "A0912_Z", "A0912_Rx", "A0912_Ry", "A0912_Rz", "A0912_solutionspace",
+    #     "M1509_j0", "M1509_j1", "M1509_j2", "M1509_j3", "M1509_j4", "M1509_j5",
+    #     "M1509_X", "M1509_Y", "M1509_Z", "M1509_Rx", "M1509_Ry", "M1509_Rz", "M1509_solutionspace",
+    #     "Switch"
+    # FROM {INFLUXDB_MEASUREMENT}
+    # ORDER BY time DESC
+    # """
     query = f"""
     SELECT time,
-        "A0912_j0", "A0912_j1", "A0912_j2", "A0912_j3", "A0912_j4", "A0912_j5",
-        "A0912_X", "A0912_Y", "A0912_Z", "A0912_Rx", "A0912_Ry", "A0912_Rz", "A0912_solutionspace",
-        "M1013_j0", "M1013_j1", "M1013_j2", "M1013_j3", "M1013_j4", "M1013_j5",
-        "M1013_X", "M1013_Y", "M1013_Z", "M1013_Rx", "M1013_Ry", "M1013_Rz", "M1013_solutionspace",
+        "M1509_j0", "M1509_j1", "M1509_j2", "M1509_j3", "M1509_j4", "M1509_j5",
+        "M1509_X", "M1509_Y", "M1509_Z", "M1509_Rx", "M1509_Ry", "M1509_Rz", "M1509_solutionspace",
         "Switch"
     FROM {INFLUXDB_MEASUREMENT}
     ORDER BY time DESC
@@ -32,12 +40,18 @@ def export_influxdb_to_csv():
         return
 
     # 헤더 설정
+    # headers = [
+    #     "time",
+    #     "A0912_j0", "A0912_j1", "A0912_j2", "A0912_j3", "A0912_j4", "A0912_j5",
+    #     "A0912_X", "A0912_Y", "A0912_Z", "A0912_Rx", "A0912_Ry", "A0912_Rz", "A0912_solutionspace",
+    #     "M1509_j0", "M1509_j1", "M1509_j2", "M1509_j3", "M1509_j4", "M1509_j5",
+    #     "M1509_X", "M1509_Y", "M1509_Z", "M1509_Rx", "M1509_Ry", "M1509_Rz", "M1509_solutionspace",
+    #     "Switch"
+    # ]
     headers = [
         "time",
-        "A0912_j0", "A0912_j1", "A0912_j2", "A0912_j3", "A0912_j4", "A0912_j5",
-        "A0912_X", "A0912_Y", "A0912_Z", "A0912_Rx", "A0912_Ry", "A0912_Rz", "A0912_solutionspace",
-        "M1013_j0", "M1013_j1", "M1013_j2", "M1013_j3", "M1013_j4", "M1013_j5",
-        "M1013_X", "M1013_Y", "M1013_Z", "M1013_Rx", "M1013_Ry", "M1013_Rz", "M1013_solutionspace",
+        "M1509_j0", "M1509_j1", "M1509_j2", "M1509_j3", "M1509_j4", "M1509_j5",
+        "M1509_X", "M1509_Y", "M1509_Z", "M1509_Rx", "M1509_Ry", "M1509_Rz", "M1509_solutionspace",
         "Switch"
     ]
 

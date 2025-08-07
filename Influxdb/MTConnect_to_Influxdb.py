@@ -1,3 +1,4 @@
+
 import requests
 import xml.etree.ElementTree as ET
 from datetime import datetime
@@ -15,23 +16,32 @@ headers = {
 }
 
 # 저장할 데이터 리스트 (robot_mode_id 제외)
+# VALID_DATA_ITEMS = [
+#     "A0912_j0", "A0912_j1", "A0912_j2", "A0912_j3", "A0912_j4", "A0912_j5",
+#     "A0912_X", "A0912_Y", "A0912_Z",
+#     "A0912_Rx", "A0912_Ry", "A0912_Rz",
+#     "A0912_solutionspace", "A0912_mode_id"
+#     "M1509_j0", "M1509_j1", "M1509_j2", "M1509_j3", "M1509_j4", "M1509_j5",
+#     "M1509_X", "M1509_Y", "M1509_Z",
+#     "M1509_Rx", "M1509_Ry", "M1509_Rz",
+#     "M1509_solutionspace", "M1509_mode_id",
+#     "Switch"
+# ]
 VALID_DATA_ITEMS = [
-    "A0912_j0", "A0912_j1", "A0912_j2", "A0912_j3", "A0912_j4", "A0912_j5",
-    "A0912_X", "A0912_Y", "A0912_Z",
-    "A0912_Rx", "A0912_Ry", "A0912_Rz",
-    "A0912_solutionspace", "A0912_mode_id"
-    "M1013_j0", "M1013_j1", "M1013_j2", "M1013_j3", "M1013_j4", "M1013_j5",
-    "M1013_X", "M1013_Y", "M1013_Z",
-    "M1013_Rx", "M1013_Ry", "M1013_Rz",
-    "M1013_solutionspace", "M1013_mode_id",
+    "M1509_j0", "M1509_j1", "M1509_j2", "M1509_j3", "M1509_j4", "M1509_j5",
+    "M1509_X", "M1509_Y", "M1509_Z",
+    "M1509_Rx", "M1509_Ry", "M1509_Rz",
+    "M1509_solutionspace", "M1509_mode_id",
     "Switch"
 ]
+
 
 def get_mtconnect_data():
     """MTConnect Agent에서 데이터 가져오기"""
     response = requests.get(MTCONNECT_URL)
     
     if response.status_code == 200:
+        # print("here")
         return response.text # XML 데이터 반환
     else:
         print(f"❌ MTConnect 데이터 수신 실패: {response.status_code}")
@@ -46,7 +56,7 @@ def parse_mtconnect_data(xml_data):
     for device in root.findall(".//mt:DeviceStream", ns):
         uuid = device.get("uuid", "UNKNOWN")
         device_name = device.get("name")
-        print(device_name)
+        # print(device_name)
 
         for component in device.findall(".//mt:ComponentStream", ns):
             for event in component.findall(".//mt:Events/*", ns):
@@ -61,12 +71,12 @@ def parse_mtconnect_data(xml_data):
                 timestamp_str = event.get("timestamp")
                 try:
                     # 마이크로초(µs)에서 나노초(ns)로 변환
-                    timestamp = int(datetime.strptime(timestamp_str, "%Y-%m-%dT%H:%M:%S.%fZ").timestamp() * 1e9)
+                    timestamp = int(datetime.strptime(timestamp_str, "%Y-%m-%dT%H:%M:%S.%fZ").timestamp() * 1e6) * 1000
                 except ValueError:
                     print(f"⛔ Timestamp format error: {timestamp_str}")
                     continue
 
-                if data_id == "solutionspace":
+                if data_id == "Solution_space":
                     value = f"{int(float(value))}i" # 정수 값에 `i` 추가
                 else:
                     value = float(value) # 부동소수점 값 변환
@@ -77,6 +87,7 @@ def parse_mtconnect_data(xml_data):
             for sample in component.findall(".//mt:Samples/*", ns):
                 data_id = sample.get("dataItemId")
                 if data_id not in VALID_DATA_ITEMS:
+                    # print("NO")
                     continue
 
                 value = sample.text
@@ -86,13 +97,13 @@ def parse_mtconnect_data(xml_data):
                 timestamp_str = sample.get("timestamp")
                 try:
                     # 마이크로초(µs)에서 나노초(ns)로 변환
-                    timestamp = int(datetime.strptime(timestamp_str, "%Y-%m-%dT%H:%M:%S.%fZ").timestamp() * 1e9)
+                    timestamp = int(datetime.strptime(timestamp_str, "%Y-%m-%dT%H:%M:%S.%fZ").timestamp() * 1e6) * 1000
                     print(timestamp_str)
                 except ValueError:
                     print(f"⛔ Timestamp format error: {timestamp_str}")
                     continue
 
-                if data_id == "solutionspace":
+                if data_id == "Solution_space":
                     value = f"{int(float(value))}i"
                 else:
                     value = float(value)
@@ -108,7 +119,8 @@ def write_to_influxdb(data_list):
         return
 
     data = "\n".join(data_list)
-    response = requests.post(INFLUXDB_URL, headers=headers, data=data)
+    print("DATA Saving: ", data)
+    response = requests.post(INFLUXDB_URL, headers = headers, data = data)
 
     if response.status_code == 204:
         print(f"✅ InfluxDB에 데이터 저장 완료: {len(data_list)}개 데이터")
@@ -120,4 +132,5 @@ if __name__ == '__main__':
         xml_data = get_mtconnect_data()
         if xml_data:
             data_list = parse_mtconnect_data(xml_data)
+            print("DATA LIST", data_list)
             write_to_influxdb(data_list)
