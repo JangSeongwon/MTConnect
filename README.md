@@ -85,6 +85,7 @@ For windows:
 4. 경로로 이동 후 Agent 다운받기: git clone https://github.com/mtconnect/cppagent.git
 5. Environment Setup(개발 도구나 컴파일러가 제대로 작동할 수 있도록 환경 변수와 경로 등을 설정):
    아래 두줄 그냥 경로에서 실행 (위에 줄만 가능)
+   2022를 다운받은 버전에 맞게 바꿔줘야함
    "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
    "C:\Program Files (x86)\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
 6. 해당 경로에서 Conan default 생성: conan profile detect
