@@ -89,7 +89,10 @@ For windows:
    "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
    "C:\Program Files (x86)\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
 6. 해당 경로에서 Conan default 생성: conan profile detect
+   VS Studio 버전에 따라 Conan 버전이 바꿔어야함.
+   6-2. C:\Users\user\.conan2\profiles\default 경로에서 compiler.cppstd=20 로 바꾸고 저장 (메모장)
 7. conan create cppagent -pr cppagent/conan/profiles/vs64 --build=missing -o cpack=True -o cpack_destination=C:\Users\smsla\Documents\.
+   7-2. conan create cppagent --build=missing -o cpack=True -o cpack_destination=C:\Users\user\MTConnect\
    여기서 destination은 cppagent 저장할 위치
 8. 생성한 agent를 생성된 폴더내에서 긁어 와서 옮겨놓을경우 agent.cfg에서 ../부분 모두 하나씩 제거해야함 (경로 설정)
 
