@@ -197,6 +197,25 @@ Alternative method: https://www.trakhound.com/site/
    => MTConnect.NET (.NET Applications & Tools for MTConnect)
    => Github: https://github.com/TrakHound/MTConnect.NET/tree/master/agent/MTConnect.NET-Agent
 
-```   
+```
 
+
+
+### IP Configurations for KUKA & UR & PC
+```   
+------------- KUKA Robot ------------- 
+KLI Communication (WorkVisual) IP 
+ 	 - KUKA 내부 Interface 컨피규레이션 = KUKA_B_1 KUKA  (예시) 172.31.1.147
+         - 노트북 or PC = KUKA_B_2  (예시) 172.31.1.150 (IPv4, 마스크: 255.255.255.0)
+RSI Communication IP
+        - KUKA 내부 Interface 컨피규레이션 = KUKA_A_1 KUKA  (예시) 192.168.1.10
+	- 노트북 or PC = KUKA_A_2  (예시) 192.168.1.4 (IPv4, 마스크: 255.255.255.0)
+	- KUKA 내부 컨트롤러 Config: \User\Common\SensorInterface\RSI_EthernetConfig.xml = KUKA_A _2 (예시)<IP_NUMBER>192.168.1.4</IP_NUMBER> <PORT>59152</PORT>
+
+------------- UR Robot ------------- 
+PC IP 세팅: UR_A
+UR로봇 내부 Installation/ExternalControl IP 세팅 = UR_A
+UR로봇 내부 컨트롤러 Setup/Network 세팅 IP = UR_B
+MTConnect Adapter에서 호출하는 IP = UR_B
+```  
 
